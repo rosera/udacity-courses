@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -160,6 +161,26 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
 //                    .into(holder.courseImage);
 //
 //        }
+
+//        holder.setClickListener(new ItemClickListener() {
+//            @Override
+//            public void onClick(View view, int position, boolean isLongClick) {
+//                if (isLongClick) {
+//                    Toast.makeText(context, "#" + position + " - " + tutorials.get(position).getCourseKey() + " (Long click)", Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(context, "#" + position + " - " + tutorials.get(position).getCourseKey() + " (Short click)", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+//
+//        // Set up a listener
+//        holder.setClickListener(new ItemClickListener() {
+//            @Override
+//            public void onClick(View view, int position, boolean isLongClick) {
+//                    Toast.makeText(context, "#" + position + " - " + tutorials.get(position).getCourseKey() + " (Long click)", Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
 
     }
 
