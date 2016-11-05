@@ -137,14 +137,14 @@ public class UdacityMainActivity extends AppCompatActivity {
 //                                req_knowledge = content.getString("required_knowledge");
 //                                syllabus = content.getString("syllabus");
 //                                homepage = content.getString("homepage");
-//                                level = content.getString("level");
-//                                duration_unit = content.getString("expected_duration_unit");
-//                                duration = content.getInt("duration");
+                                level = content.getString("level");
+                                duration_unit = content.getString("expected_duration_unit");
+                                duration = content.getInt("expected_duration");
 
 
                                 // TODO: Add to Udacity structure
                                 mUdacityInformation.add(new UdacityData(subtitle, key, image,
-                                        title, "", "", 0, "", FALSE, description));
+                                        title, level, duration_unit, duration, "", FALSE, description));
                             }
 
                             // TODO: Set the adapter for the response data
