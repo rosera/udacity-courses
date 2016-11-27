@@ -54,28 +54,37 @@
                     android:id="@+id/key"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorGreyLight"
                     android:textSize="16sp"
-                    android:paddingLeft="5dp"
-                    android:contentDescription="Course key"
-                    android:layout_below="@+id/title"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:contentDescription="Course identification key"
+                    android:layout_below="@+id/title"/>
 
                 <TextView
                     android:id="@+id/subtitle"
+                    android:textStyle="bold"
                     android:layout_below="@id/key"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="16dp"
                     android:textColor="@color/colorGreyLight"
                     android:contentDescription="Course subtitle" />
 
                 <TextView
-                    android:id="@+id/description"
+                    android:id="@+id/course_info"
                     android:layout_below="@id/subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorGreyLight"
+                    android:contentDescription="Course detail" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_below="@id/course_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

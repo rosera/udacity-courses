@@ -1,6 +1,7 @@
-package com.processisolation.rosera.udacitycurated;
+package com.processisolation.rosera.udacitycurated.Main;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.processisolation.rosera.udacitycurated.R;
 
 import java.util.List;
 
@@ -25,6 +25,8 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
     private int                 rowLayout;
     private Context             context;
 
+    UdacityItemClickListener    udacityItemClickListener;
+
    /*
     * Class Name: UdacityViewHolder
     * Description: Implement a view holder pattern
@@ -36,8 +38,10 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
         TextView                courseTitle;
         TextView                courseKey;
         TextView                courseSubtitle;
+        TextView                courseInfo;
         TextView                courseDescription;
         ImageView               courseImage;
+
 
        /*
         * Name: UdacityViewHolder
@@ -53,6 +57,7 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
             courseTitle         = (TextView)v.findViewById(R.id.title);
             courseKey           = (TextView)v.findViewById(R.id.key);
             courseSubtitle      = (TextView)v.findViewById(R.id.subtitle);
+            courseInfo          = (TextView)v.findViewById(R.id.course_info);
             courseDescription   = (TextView)v.findViewById(R.id.description);
             courseImage         = (ImageView)v.findViewById(R.id.image);
         }
@@ -82,7 +87,19 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
     public UdacityAdapter.UdacityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
 
-        return new UdacityViewHolder(view);
+        final UdacityViewHolder mViewHolder = new UdacityViewHolder(view);
+
+
+
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                udacityItemClickListener.onItemClick(v, mViewHolder.getPosition());
+//            }
+//        });
+
+//        return new UdacityViewHolder(view);
+        return mViewHolder;
     }
 
     /*
@@ -94,10 +111,39 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
      */
     @Override
     public void onBindViewHolder(UdacityViewHolder holder, final int position) {
-        holder.courseTitle.setText(tutorials.get(position).getCourseTitle());
-        holder.courseKey.setText("Course Key: " + tutorials.get(position).getCourseKey());
+        holder.courseTitle.setText(tutorials.get(position).getCourseTitle() );
+        holder.courseKey.setText("Course ID: " + tutorials.get(position).getCourseKey() + " - Level: " + tutorials.get(position).getCourseLevel());
         holder.courseSubtitle.setText(tutorials.get(position).getCourseSubTitle());
+        String info = "Course duration: " + tutorials.get(position).getCourseDuration()
+               + " " + tutorials.get(position).getCourseDurationUnit()
+               ;
+
+        holder.courseInfo.setText(info);
         holder.courseDescription.setText(tutorials.get(position).getCourseDescription());
+
+        // TODO: Refactor color coding of skill level
+
+        // Set the background to match the level
+        switch (tutorials.get(position).getCourseLevel()) {
+            case "beginner":        // OFf White
+                holder.courseTitle.setBackgroundColor(Color.parseColor("#FFDEAD"));
+                holder.courseKey.setBackgroundColor(Color.parseColor("#FFDEAD"));
+                break;
+            case "intermediate":    // Yellow
+                holder.courseTitle.setBackgroundColor(Color.parseColor("#FFFACD"));
+                holder.courseKey.setBackgroundColor(Color.parseColor("#FFFACD"));
+                break;
+            case "advanced":        // Blue
+                holder.courseTitle.setBackgroundColor(Color.parseColor("#AFEEEE"));
+                holder.courseKey.setBackgroundColor(Color.parseColor("#AFEEEE"));
+                break;
+            default:
+                // Leave the default colour
+                break;
+        }
+
+
+        // TODO: Refactor image selection for courses
 
         // For locally held resources
         switch(tutorials.get(position).getCourseKey()) {

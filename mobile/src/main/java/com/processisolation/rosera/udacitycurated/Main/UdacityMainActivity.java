@@ -1,4 +1,4 @@
-package com.processisolation.rosera.udacitycurated;
+package com.processisolation.rosera.udacitycurated.Main;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.processisolation.rosera.udacitycurated.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +31,7 @@ public class UdacityMainActivity extends AppCompatActivity {
     // TODO: Add some global variables
     private ArrayList<UdacityData>      mUdacityInformation = null;
     private RecyclerView                mRecyclerView = null;
+    private UdacityAdapter              mAdapter = null;
 
    /*
     * Name: onCreate
@@ -58,6 +61,14 @@ public class UdacityMainActivity extends AppCompatActivity {
             // Offline - display an appropriate message
             Toast.makeText(getApplicationContext(), "Please check your internet connectivity", Toast.LENGTH_LONG).show();
         }
+
+        // Add a listener for the RecyclerView - Ref: Mastering Android Application Development p100
+        mRecyclerView.addOnItemTouchListener(new UdacityItemClickListener(getApplicationContext(), mRecyclerView, new UdacityItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getApplicationContext(), "Selected: " + mUdacityInformation.get(position).getCourseTitle(), Toast.LENGTH_SHORT).show();
+            }
+        }));
     }
 
     /*
@@ -137,14 +148,14 @@ public class UdacityMainActivity extends AppCompatActivity {
 //                                req_knowledge = content.getString("required_knowledge");
 //                                syllabus = content.getString("syllabus");
 //                                homepage = content.getString("homepage");
-//                                level = content.getString("level");
-//                                duration_unit = content.getString("expected_duration_unit");
-//                                duration = content.getInt("duration");
+                                level = content.getString("level");
+                                duration_unit = content.getString("expected_duration_unit");
+                                duration = content.getInt("expected_duration");
 
 
                                 // TODO: Add to Udacity structure
                                 mUdacityInformation.add(new UdacityData(subtitle, key, image,
-                                        title, "", "", 0, "", FALSE, description));
+                                        title, level, duration_unit, duration, "", FALSE, description));
                             }
 
                             // TODO: Set the adapter for the response data

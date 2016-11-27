@@ -1,4 +1,4 @@
-package com.processisolation.rosera.udacitycurated;
+package com.processisolation.rosera.udacitycurated.Main;
 
 /**
  * Created by rosera on 02/11/16.

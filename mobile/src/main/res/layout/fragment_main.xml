@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.processisolation.rosera.udacitycurated.Main.MainActivityFragment"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Title"
+        android:textSize="16dp"
+        android:layout_marginBottom="5dp"
+        android:text="Android Developer Nanodegree"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Description"
+        android:layout_below="@id/Title"
+        android:layout_marginBottom="10dp"
+        android:text="Learn to develop for Android and transform your career outlook! This Nanodegree will provide a guided, efficient path for an intermediate developer with little or no experience on mobile platforms to emerge as an Android Developer. \n\nBy the end of the Nanodegree, you'll have a diverse portfolio of projects to show employers, and will even publish your own app on the Google Play Store as part of the Capstone project.\n\n**This is an Intermediate Nanodegree**: Entering students are expected to have prior experience building applications (web or mobile) in Java or another object-oriented programming language."/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/course_recyclerview"
+        android:layout_below="@+id/Description"
+        android:layout_marginTop="5dp" />
+
+</RelativeLayout>
