@@ -19,6 +19,8 @@ import com.processisolation.rosera.udacitycurated.R;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -31,6 +33,12 @@ public class MainActivityFragment extends Fragment {
     private static String mDescription = "";
     private static String[] mCourseArray;
     private static String[] mCourseImageArray;
+    private static String[] mCourseNameArray;
+
+    private static ArrayList<CoursesData> mCoursesInformation;
+//    private Test mCoursesInformation;
+
+
 
     public MainActivityFragment() {
     }
@@ -55,14 +63,35 @@ public class MainActivityFragment extends Fragment {
             mDescription    = getActivity().getIntent().getExtras().getString("Description");
 
             mCourseArray = getActivity().getIntent().getExtras().getStringArray("Courses");
-            mCourseImageArray = getActivity().getIntent().getExtras().getStringArray("Images");
+//            mCourseImageArray = getActivity().getIntent().getExtras().getStringArray("Images");
+//            mCourseNameArray = getActivity().getIntent().getExtras().getStringArray("Title");
+//            mCoursesInformation = (Test) getActivity().getIntent().getExtras().get("CourseList");
+//            mCoursesInformation = getActivity().getIntent().getParcelableArrayListExtra("CourseList");
+//            mCoursesInformation = getActivity().getIntent().getExtras().getParcelableArrayList("CourseList");
+
+            mCoursesInformation = getActivity().getIntent().getExtras().getParcelableArrayList("CourseList");
+
+            ArrayList<CoursesData> tempArrayData = mCoursesInformation;
+            CoursesData tempData2;
+
+
+            // TODO: Show the data passed
+            for (int i=0; i < tempArrayData.size(); i++) {
+                tempData2 = tempArrayData.get(i);
+
+                i = i;
+            }
+
+
+
+
 
             // TODO: Debug check
             int i = mCourseArray.length;
             Log.i("Debug", "i =  " + i);
 
-            int y = mCourseImageArray.length;
-            Log.i("Debug", "y =  " + y);
+//            int y = mCourseImageArray.length;
+//            Log.i("Debug", "y =  " + y);
 
         }
     }
@@ -97,7 +126,8 @@ public class MainActivityFragment extends Fragment {
         // TODO: Set up RecyclerView
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.course_recyclerview);
 
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+        // TODO: Check the device density to correct number of grid items
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
 
         layoutManager.setGapStrategy(
                 StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
@@ -105,39 +135,10 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        // TODO: Allocate memory for the RecyclerView
-        final String[] courseArray  = {
-                                "Course1",
-                                "Course2",
-                                "Course3",
-                                "Course4",
-                                "Course5",
-                                "Course6",
-                                "Course7",
-                                "Course8",
-                                "Course9",
-                                "Course10",
-                                "Course11",
-                                "Course12",
-                                "Course13"};
-
-        int[] drawables     = { R.drawable.nd000,
-                                R.drawable.nd001,
-                                R.drawable.nd002,
-                                R.drawable.nd003,
-                                R.drawable.nd004,
-                                R.drawable.nd006,
-                                R.drawable.nd008,
-                                R.drawable.nd009,
-                                R.drawable.nd013,
-                                R.drawable.nd017,
-                                R.drawable.nd801,
-                                R.drawable.nd803,
-                                R.drawable.nd889};
-
         // TODO: Add items to the screen
 //        mRecyclerView.setAdapter(new CourseAdapter(courseArray, drawables, R.layout.gridview_image, getActivity()));
-        mRecyclerView.setAdapter(new CourseAdapter(mCourseArray, mCourseImageArray, R.layout.gridview_image, getActivity()));
+//        mRecyclerView.setAdapter(new CourseAdapter(mCourseNameArray, mCourseImageArray, R.layout.gridview_image, getActivity()));
+        mRecyclerView.setAdapter(new CourseAdapter(mCoursesInformation, R.layout.gridview_image, getActivity()));
 
         // Add a listener for the RecyclerView - Ref: Mastering Android Application Development p100
         mRecyclerView.addOnItemTouchListener(new UdacityItemClickListener(getActivity(),
@@ -151,10 +152,12 @@ public class MainActivityFragment extends Fragment {
                 // Initiate a new activity for the onscreen item clicked
                 Intent intent = new Intent(getActivity(), CourseDetailActivity.class)
 //                        .putExtra("ID", mUdacityDegreesInformation.get(position).getCourseKey())
+                        .putExtra("Course", mCoursesInformation.get(position))
                         .putExtra("Name", mName)
+                        .putExtra("Image", mCoursesInformation.get(position).getCourseImage())
                         .putExtra("Description", mDescription);
 
-                // Commence the new intent
+                // Commence the new intent - Course detail summary
                 startActivity(intent);
             }
         }));

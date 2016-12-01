@@ -15,6 +15,10 @@ import android.view.View;
 
 public class UdacityItemClickListener implements RecyclerView.OnItemTouchListener {
 
+    private OnItemClickListener mListener;
+    private GestureDetector     mGestureDectector;
+
+
     @Override
     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
 
@@ -40,8 +44,7 @@ public class UdacityItemClickListener implements RecyclerView.OnItemTouchListene
         public void onItemClick(View view, int position);
     }
 
-    private OnItemClickListener mListener;
-    private GestureDetector     mGestureDectector;
+
 
     public UdacityItemClickListener(Context context, final RecyclerView recyclerView,
                                     OnItemClickListener listener) {

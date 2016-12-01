@@ -21,7 +21,7 @@ import java.util.List;
 
 public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityViewHolder>{
 
-    private List<UdacityData>   tutorials;
+    private List<TracksData>    tracks;
     private int                 rowLayout;
     private Context             context;
 
@@ -35,11 +35,11 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
 
     public static class UdacityViewHolder extends RecyclerView.ViewHolder {
         LinearLayout            udacityLayout;
-        TextView                courseTitle;
-        TextView                courseKey;
-        TextView                courseSubtitle;
-        TextView                courseInfo;
-        TextView                courseDescription;
+        TextView                courseName;
+//        TextView                courseKey;
+//        TextView                courseSubtitle;
+//        TextView                courseInfo;
+//        TextView                courseDescription;
         ImageView               courseImage;
 
 
@@ -54,11 +54,11 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
             super(v);
 
             udacityLayout       = (LinearLayout) v.findViewById(R.id.udacity_layout);
-            courseTitle         = (TextView)v.findViewById(R.id.title);
-            courseKey           = (TextView)v.findViewById(R.id.key);
-            courseSubtitle      = (TextView)v.findViewById(R.id.subtitle);
-            courseInfo          = (TextView)v.findViewById(R.id.course_info);
-            courseDescription   = (TextView)v.findViewById(R.id.description);
+            courseName         = (TextView)v.findViewById(R.id.title);
+//            courseKey           = (TextView)v.findViewById(R.id.key);
+//            courseSubtitle      = (TextView)v.findViewById(R.id.subtitle);
+//            courseInfo          = (TextView)v.findViewById(R.id.course_info);
+//            courseDescription   = (TextView)v.findViewById(R.id.description);
             courseImage         = (ImageView)v.findViewById(R.id.image);
         }
     }
@@ -70,8 +70,8 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
     *
     */
 
-    public UdacityAdapter(List<UdacityData> tutorials, int rowLayout, Context context) {
-        this.tutorials  = tutorials;
+    public UdacityAdapter(List<TracksData> tracks, int rowLayout, Context context) {
+        this.tracks     = tracks;
         this.rowLayout  = rowLayout;
         this.context    = context;
     }
@@ -89,16 +89,6 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
 
         final UdacityViewHolder mViewHolder = new UdacityViewHolder(view);
 
-
-
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                udacityItemClickListener.onItemClick(v, mViewHolder.getPosition());
-//            }
-//        });
-
-//        return new UdacityViewHolder(view);
         return mViewHolder;
     }
 
@@ -111,83 +101,64 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
      */
     @Override
     public void onBindViewHolder(UdacityViewHolder holder, final int position) {
-        holder.courseTitle.setText(tutorials.get(position).getCourseTitle() );
-        holder.courseKey.setText("Course ID: " + tutorials.get(position).getCourseKey() + " - Level: " + tutorials.get(position).getCourseLevel());
-        holder.courseSubtitle.setText(tutorials.get(position).getCourseSubTitle());
-        String info = "Course duration: " + tutorials.get(position).getCourseDuration()
-               + " " + tutorials.get(position).getCourseDurationUnit()
-               ;
+        holder.courseName.setText(tracks.get(position).getName() );
+//        holder.courseKey.setText("Course ID: " + tutorials.get(position).getCourseKey() + " - Level: " + tutorials.get(position).getCourseLevel());
+//        holder.courseSubtitle.setText(tutorials.get(position).getCourseSubTitle());
+//        String info = "Course duration: " + tutorials.get(position).getCourseDuration()
+//               + " " + tutorials.get(position).getCourseDurationUnit();
 
-        holder.courseInfo.setText(info);
-        holder.courseDescription.setText(tutorials.get(position).getCourseDescription());
+//        holder.courseInfo.setText(info);
+//        holder.courseDescription.setText(tutorials.get(position).getCourseDescription());
 
         // TODO: Refactor color coding of skill level
-
-        // Set the background to match the level
-        switch (tutorials.get(position).getCourseLevel()) {
-            case "beginner":        // OFf White
-                holder.courseTitle.setBackgroundColor(Color.parseColor("#FFDEAD"));
-                holder.courseKey.setBackgroundColor(Color.parseColor("#FFDEAD"));
-                break;
-            case "intermediate":    // Yellow
-                holder.courseTitle.setBackgroundColor(Color.parseColor("#FFFACD"));
-                holder.courseKey.setBackgroundColor(Color.parseColor("#FFFACD"));
-                break;
-            case "advanced":        // Blue
-                holder.courseTitle.setBackgroundColor(Color.parseColor("#AFEEEE"));
-                holder.courseKey.setBackgroundColor(Color.parseColor("#AFEEEE"));
-                break;
-            default:
-                // Leave the default colour
-                break;
-        }
+//
+//        // Set the background to match the level
+//        switch (tutorials.get(position).getCourseLevel()) {
+//            case "beginner":        // OFf White
+//                holder.courseTitle.setBackgroundColor(Color.parseColor("#FFDEAD"));
+//                holder.courseKey.setBackgroundColor(Color.parseColor("#FFDEAD"));
+//                break;
+//            case "intermediate":    // Yellow
+//                holder.courseTitle.setBackgroundColor(Color.parseColor("#FFFACD"));
+//                holder.courseKey.setBackgroundColor(Color.parseColor("#FFFACD"));
+//                break;
+//            case "advanced":        // Blue
+//                holder.courseTitle.setBackgroundColor(Color.parseColor("#AFEEEE"));
+//                holder.courseKey.setBackgroundColor(Color.parseColor("#AFEEEE"));
+//                break;
+//            default:
+//                // Leave the default colour
+//                break;
+//        }
 
 
         // TODO: Refactor image selection for courses
 
         // For locally held resources
-        switch(tutorials.get(position).getCourseKey()) {
-            case "nd000":
+        switch(tracks.get(position).getName()) {
+            case "Software Engineering":
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd000));
                 break;
-            case "nd001":
+            case "Web Development":
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd001));
                 break;
-            case "nd002":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd002));
-                break;
-            case "nd003":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd003));
-                break;
-            case "nd004":
+            case "iOS":
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd004));
                 break;
-            case "nd006":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd006));
+            case "Georgia Tech Masters in CS":
+                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd003));
                 break;
-            case "nd008":
+            case "Non-Tech":
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd008));
                 break;
-            case "nd009":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd009));
-                break;
-            case "nd013":
+            case "Data Science":
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd013));
                 break;
-            case "nd017":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd017));
-                break;
-            case "nd801":
+            case "Android":
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd801));
                 break;
-            case "nd803":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd803));
-                break;
-            case "nd889":
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd889));
-                break;
             default:
-                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd000));
+                holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd002));
                 break;
         }
 
@@ -239,6 +210,6 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
 
     @Override
     public int getItemCount() {
-        return tutorials.size();
+        return tracks.size();
     }
 }
