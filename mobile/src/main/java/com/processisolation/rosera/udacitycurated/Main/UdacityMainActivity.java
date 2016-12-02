@@ -506,14 +506,14 @@ public class UdacityMainActivity extends AppCompatActivity {
         int density = metrics.densityDpi;
         int widthPixels = metrics.widthPixels;
 
-        int  intLayoutControls = 4;
+        int  intLayoutControls = 3;
 
         if (widthPixels < 721)
             intLayoutControls = 1;
         else if (widthPixels < 1025)
             intLayoutControls = 3;
         else
-            intLayoutControls = 4;
+            intLayoutControls = 3;
 
         return intLayoutControls;
     }
