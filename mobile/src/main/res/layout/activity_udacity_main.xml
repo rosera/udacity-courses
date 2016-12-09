@@ -10,50 +10,86 @@
     android:paddingTop="10dp"
     tools:context="com.processisolation.rosera.udacitycurated.Main.UdacityMainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:textSize="15sp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:text="Overview"/>
-
-    <TextView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/intro"
-        android:layout_below="@id/title"
-        android:padding="5dp"
-        android:textSize="13dp"
-        android:paddingBottom="5dp"
-        android:text="Master in-demand skills. Build and design amazing projects. Earn a valued credential. Launch your career in Data Science, Machine Learning, Android, iOS, and more. Be in demand."/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/trackTitle"
-        android:layout_below="@id/intro"
-        android:textSize="15sp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:text="Tracks"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_header">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/udacity_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/trackTitle">
-    </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.CardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/page_header_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                card_view:cardElevation="4dp"
+                card_view:cardCornerRadius="4dp"
+                android:nestedScrollingEnabled="false">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/degree_choice"
-        android:padding="5dp"
-        android:textSize="13sp"
-        android:paddingTop="30dp"
-        android:layout_below="@+id/udacity_recyclerview"
-        android:text="Each program we offer is designed to help you achieve goals, meet objectives, and succeed in your life and career. Whether you have a specific job in mind, or want to learn specific skills, the best way to decide is to envision your desired outcome, and then select the path that will get you there. Sometimes this is easy—you want to build Android apps, you take the Android Developer program! But if you’re not sure, we can guide you in the right direction. Our blog is a great resource for career pathing, and you can always email us at support@udacity.com. We’ll learn about your interests, your goals, and your experience, and make personalized recommendations on the best ways to move forward."/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/title"
+                        android:textStyle="bold"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Overview"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/intro"
+                        android:layout_below="@id/title"
+                        android:textSize="12sp"
+
+                        android:padding="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Master in-demand skills. Build and design amazing projects. Earn a valued credential. Launch your career in Data Science, Machine Learning, Android, iOS, and more. Be in demand."/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/trackTitle"
+                        android:textStyle="bold"
+                        android:layout_below="@id/intro"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Tracks"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/degree_choice"
+                        android:textSize="12sp"
+                        android:layout_below="@+id/trackTitle"
+                        android:padding="5dp"
+                        android:paddingTop="30dp"
+
+                        android:text="Each program we offer is designed to help you achieve goals, meet objectives, and succeed in your life and career. Whether you have a specific job in mind, or want to learn specific skills, the best way to decide is to envision your desired outcome, and then select the path that will get you there. Sometimes this is easy—you want to build Android apps, you take the Android Developer program! But if you’re not sure, we can guide you in the right direction. Our blog is a great resource for career pathing, and you can always email us at support@udacity.com. We’ll learn about your interests, your goals, and your experience, and make personalized recommendations on the best ways to move forward."/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/udacity_recyclerview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/page_header_card_view">
+            </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

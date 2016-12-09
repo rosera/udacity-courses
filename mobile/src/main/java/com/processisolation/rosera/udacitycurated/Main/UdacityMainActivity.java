@@ -83,8 +83,8 @@ public class UdacityMainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
 //        mRecyclerView.setLayoutManager(layoutManager);
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, getScreenDensity()));
-
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, getScreenDensity()));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         // Allocate memory for the course information
         mTracksInformation = new ArrayList<>();
         mCoursesInformation = new ArrayList<>();
@@ -315,11 +315,11 @@ public class UdacityMainActivity extends AppCompatActivity {
     public void setTrackInformation(JSONArray jsonDegreesArray, int position) {
 
         // TODO: Get the object details - examine the available properties
-        String  name            = "";
-        String  description     = "";
-        String[] courseIds;
-        String[] courseImages;
-        String[] courseName;
+        String      name            = "";
+        String      description     = "";
+        String[]    courseIds;
+        String[]    courseImages;
+        String[]    courseName;
 
         CoursesData tempCourseData;
 
@@ -340,6 +340,7 @@ public class UdacityMainActivity extends AppCompatActivity {
             courseName = new String[jsonArray.length()];
             ArrayList<CoursesData> coursedata;
 
+            // TODO: Allocate memory for the course data
             coursedata = new ArrayList<>();
 
 

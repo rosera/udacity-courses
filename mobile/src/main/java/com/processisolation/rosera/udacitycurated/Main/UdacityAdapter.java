@@ -1,11 +1,13 @@
 package com.processisolation.rosera.udacitycurated.Main;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,8 +40,9 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
         TextView                courseName;
 //        TextView                courseKey;
 //        TextView                courseSubtitle;
-//        TextView                courseInfo;
-//        TextView                courseDescription;
+        ImageButton             courseFavourite;
+        TextView                courseTrackNumber;
+        TextView                courseDescription;
         ImageView               courseImage;
 
 
@@ -57,8 +60,9 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
             courseName         = (TextView)v.findViewById(R.id.title);
 //            courseKey           = (TextView)v.findViewById(R.id.key);
 //            courseSubtitle      = (TextView)v.findViewById(R.id.subtitle);
-//            courseInfo          = (TextView)v.findViewById(R.id.course_info);
-//            courseDescription   = (TextView)v.findViewById(R.id.description);
+        courseFavourite         = (ImageButton)v.findViewById(R.id.favourite);
+            courseTrackNumber          = (TextView)v.findViewById(R.id.number_of_tracks);
+            courseDescription   = (TextView)v.findViewById(R.id.description);
             courseImage         = (ImageView)v.findViewById(R.id.image);
         }
     }
@@ -102,6 +106,9 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
     @Override
     public void onBindViewHolder(UdacityViewHolder holder, final int position) {
         holder.courseName.setText(tracks.get(position).getName() );
+        holder.courseDescription.setText(tracks.get(position).getDescription());
+        holder.courseTrackNumber.setText("Courses found: " + tracks.get(position).getCourseList().size());
+
 //        holder.courseKey.setText("Course ID: " + tutorials.get(position).getCourseKey() + " - Level: " + tutorials.get(position).getCourseLevel());
 //        holder.courseSubtitle.setText(tutorials.get(position).getCourseSubTitle());
 //        String info = "Course duration: " + tutorials.get(position).getCourseDuration()
@@ -132,35 +139,54 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
 //        }
 
 
+        // TODO: Get SharedPreferences data
+        SharedPreferences sharedPref = context.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPref.edit();
+
+        Boolean favouriteSetting = false;
+//        favouriteSetting =  sharedPref.getBoolean("Data_Science", favouriteSetting);
+
+
         // TODO: Refactor image selection for courses
 
         // For locally held resources
         switch(tracks.get(position).getName()) {
             case "Software Engineering":
+                favouriteSetting = sharedPref.getBoolean("Software_Engineering", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd000));
                 break;
             case "Web Development":
+                favouriteSetting = sharedPref.getBoolean("Web_Development", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd001));
                 break;
             case "iOS":
+                favouriteSetting = sharedPref.getBoolean("iOS", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd004));
                 break;
             case "Georgia Tech Masters in CS":
+                favouriteSetting = sharedPref.getBoolean("Georgia", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd003));
                 break;
             case "Non-Tech":
+                favouriteSetting = sharedPref.getBoolean("Non_Tech", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd008));
                 break;
             case "Data Science":
+                favouriteSetting = sharedPref.getBoolean("Data_Science", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd013));
                 break;
             case "Android":
+                favouriteSetting = sharedPref.getBoolean("Android", favouriteSetting);
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd801));
                 break;
             default:
                 holder.courseImage.setImageDrawable(context.getResources().getDrawable(R.drawable.nd002));
                 break;
         }
+
+        // TODO: Change the display icon
+        if (favouriteSetting)
+            holder.courseFavourite.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_action_favourite_circular_button_on));
 
 
         // TODO: UDACITY jsonReponse has inconsistent images available.

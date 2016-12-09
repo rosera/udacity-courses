@@ -26,7 +26,7 @@
                 android:id="@+id/heading_title"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:paddingBottom="5dp"
                 android:text="Course synopsis"/>
@@ -51,7 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:divider="@drawable/seperator"
+                        android:divider="@drawable/separator"
                         android:dividerPadding="15dp"
                         android:showDividers="middle">
 
@@ -59,45 +59,91 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:id="@+id/courseImageView"
-                            android:src="@drawable/placeholder"
-                            android:contentDescription="CourseImage"
-                            android:scaleType="fitXY"
-                            style="?android:attr/buttonBarButtonStyle"
-                            android:paddingRight="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingBottom="10dp"
-                            android:cropToPadding="true"
-                            android:layout_width="226dp"
-                            android:layout_height="163dp"
-
-                            android:adjustViewBounds="true" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/title"
-
-                            android:layout_marginTop="10dp"
-
-                            android:layout_marginLeft="5dp"
-                            android:paddingLeft="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="Advanced Android App Development"/>
-
-                        </RelativeLayout>
+                            <ImageView
+                                android:id="@+id/courseImageView"
+                                android:src="@drawable/placeholder"
+                                android:contentDescription="CourseImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitXY"
+                                android:paddingRight="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="0dp"
+                                android:cropToPadding="false"
+                                android:maxHeight="226dp"
+                                android:maxWidth="163dp"
+                                android:adjustViewBounds="true" />
 
                             <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/title"
+                                android:textStyle="bold"
+                                android:textSize="12dp"
+                                android:layout_below="@+id/courseImageView"
+
+
+                                android:maxWidth="200dp"
+                                android:layout_marginLeft="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingBottom="5dp"
+                                android:text="Advanced Android App Development"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/summary"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="15dp"
-                            android:paddingTop="10dp"
-                            android:layout_alignParentRight="@id/courseImageView"
-                            android:layout_alignRight="@+id/courseImageView" />
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/summary_header"
+                                android:textStyle="bold"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="15dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="10dp"
+                                android:text="Title"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/summary"
+                                android:layout_below="@id/summary_header"
+                                android:textSize="12dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingBottom="15dp"
+                                android:paddingTop="5dp"
+                                android:text="My summary"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/what_you_need_header"
+                                android:layout_below="@id/summary"
+                                android:textStyle="bold"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="15dp"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="10dp"
+                                android:text="What you need to know"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/what_you_need"
+                                android:layout_below="@id/what_you_need_header"
+                                android:textSize="12dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingBottom="15dp"
+                                android:paddingTop="5dp"
+                                android:text="What you need to know"/>
+
+                        </RelativeLayout>
 
                     </LinearLayout>
 
@@ -112,7 +158,7 @@
                 android:textStyle="bold"
 
                 android:layout_below="@+id/course_card_view"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
@@ -139,7 +185,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:divider="@drawable/seperator"
+                        android:divider="@drawable/separator"
                         android:dividerPadding="15dp"
                         android:showDividers="middle">
 
@@ -151,6 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/header_expected_learning"
+                            android:textStyle="bold"
                             android:paddingLeft="5dp"
                             android:layout_marginLeft="5dp"
                             android:paddingTop="10dp"
@@ -162,6 +209,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/expected_learning"
+                            android:textSize="12dp"
                             android:padding="10dp"
                             android:layout_below="@+id/header_expected_learning"
                             android:maxWidth="300dp"
@@ -195,6 +243,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/header_syllabus"
+                                android:textStyle="bold"
                                 android:paddingLeft="5dp"
                                 android:paddingTop="10dp"
                                 android:paddingBottom="5dp"
@@ -205,6 +254,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/syllabus"
+                                android:textSize="12dp"
                                 android:padding="10dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_below="@+id/header_syllabus"
@@ -214,6 +264,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/level"
+
                                 android:text="Level: Advanced"
                                 android:paddingLeft="5dp"
                                 android:paddingBottom="5dp"
@@ -224,9 +275,7 @@
                                 android:gravity="center"
                                 android:textAllCaps="true"
                                 android:textSize="10sp"
-                                android:layout_below="@id/details"
-
-                                android:layout_alignParentRight="true" />
+                                android:layout_below="@id/syllabus" />
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -268,7 +317,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:divider="@drawable/seperator"
+                    android:divider="@drawable/separator"
                     android:dividerPadding="15dp"
                     android:showDividers="middle">
 
@@ -278,6 +327,9 @@
                         android:padding="10dp"
                         android:maxHeight="250dp"
                         android:maxWidth="200dp"
+                        android:minHeight="250dp"
+                        android:minWidth="200dp"
+                        android:src="@drawable/no_image_sml"
                         android:id="@+id/instructor_image"
                         android:adjustViewBounds="true"
                         android:cropToPadding="true" />
@@ -290,18 +342,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/instructor"
+                        android:textStyle="bold"
+
                         android:padding="10dp"
-                        android:layout_alignParentLeft="true"
-                        android:text="Joanna Smith"/>
+
+                        android:text="Not specified"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/instructor_bio"
+                        android:textSize="12sp"
                         android:padding="10dp"
-                        android:layout_alignParentRight="true"
+
                         android:layout_below="@+id/instructor"
-                        android:text="Joanna Smith is a Developer Advocate at Google, trying to spread the word about Android best practices.  She’s got fierce Texas pride, a dog that is smaller than most cats, and a staunch dedication to helping developers create excellent Android apps."/>
+                        android:text="Not specified"/>
                     </RelativeLayout>
             </LinearLayout>
 
@@ -330,7 +385,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:divider="@drawable/seperator"
+                        android:divider="@drawable/separator"
                         android:dividerPadding="15dp"
                         android:showDividers="middle">
 
@@ -340,9 +395,11 @@
                             android:padding="10dp"
                             android:maxHeight="250dp"
                             android:maxWidth="200dp"
+                            android:minHeight="250dp"
+                            android:minWidth="200dp"
+                            android:src="@drawable/no_image_sml"
                             android:id="@+id/instructor_image2"
-                            android:adjustViewBounds="true"
-                            android:cropToPadding="true" />
+                            android:adjustViewBounds="true" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -352,18 +409,19 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/instructor2"
+                                android:textStyle="bold"
                                 android:padding="10dp"
-                                android:layout_alignParentLeft="true"
-                                android:text="Joanna Smith"/>
+
+                                android:text="Not specified"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/instructor_bio2"
                                 android:padding="10dp"
-                                android:layout_alignParentRight="true"
+                                android:textSize="12sp"
                                 android:layout_below="@+id/instructor2"
-                                android:text="Joanna Smith is a Developer Advocate at Google, trying to spread the word about Android best practices.  She’s got fierce Texas pride, a dog that is smaller than most cats, and a staunch dedication to helping developers create excellent Android apps."/>
+                                android:text="Not specified"/>
                         </RelativeLayout>
                     </LinearLayout>
 

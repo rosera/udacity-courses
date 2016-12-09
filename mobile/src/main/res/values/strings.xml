@@ -9,4 +9,7 @@
     <string name="course_image">Course image</string>
     <string name="course_title">Course title</string>
     <string name="favourite_selector">Favourite selector</string>
+    <string name="favourite_data_science">Data Science</string>
+    <string name="favourite_web_dev">Web Development</string>
+    <string name="favourite_soft_eng">Software Engineering</string>
 </resources>
