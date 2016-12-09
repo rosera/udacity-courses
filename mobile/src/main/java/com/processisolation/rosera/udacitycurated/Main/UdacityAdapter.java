@@ -187,6 +187,8 @@ public class UdacityAdapter extends RecyclerView.Adapter<UdacityAdapter.UdacityV
         // TODO: Change the display icon
         if (favouriteSetting)
             holder.courseFavourite.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_action_favourite_circular_button_on));
+        else
+            holder.courseFavourite.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_action_favourite_circular_button_off));
 
 
         // TODO: UDACITY jsonReponse has inconsistent images available.

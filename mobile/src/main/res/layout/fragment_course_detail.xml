@@ -72,7 +72,7 @@
                                 android:paddingBottom="0dp"
                                 android:cropToPadding="false"
                                 android:maxHeight="226dp"
-                                android:maxWidth="163dp"
+                                android:maxWidth="165dp"
                                 android:adjustViewBounds="true" />
 
                             <TextView
@@ -84,7 +84,7 @@
                                 android:layout_below="@+id/courseImageView"
 
 
-                                android:maxWidth="200dp"
+                                android:maxWidth="165dp"
                                 android:layout_marginLeft="5dp"
                                 android:paddingLeft="5dp"
                                 android:paddingRight="5dp"
@@ -162,6 +162,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
+
                 android:text="Course details"/>
 
             <android.support.v7.widget.CardView
@@ -202,7 +203,7 @@
                             android:layout_marginLeft="5dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="5dp"
-                            android:maxWidth="300dp"
+                            android:maxWidth="165dp"
                             android:text="Expected learning"/>
 
                         <TextView
@@ -212,7 +213,9 @@
                             android:textSize="12dp"
                             android:padding="10dp"
                             android:layout_below="@+id/header_expected_learning"
-                            android:maxWidth="300dp"
+                            android:minWidth="165dp"
+                            android:maxWidth="250dp"
+
                             android:layout_marginLeft="5dp"
                             android:text="With over 1.4 billion Android devices worldwide and 82% market share, Android offers you unprecedented opportunities to build apps that can be used by people around the world.\n\nThe next billion people coming online will interact with the internet for the very first time on a mobile device. Building for Android gives you the best opportunity to reach these users and make an impact -- both in your community, and on the world."/>
 
@@ -326,9 +329,9 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:maxHeight="250dp"
-                        android:maxWidth="200dp"
+                        android:maxWidth="165dp"
                         android:minHeight="250dp"
-                        android:minWidth="200dp"
+                        android:minWidth="165dp"
                         android:src="@drawable/no_image_sml"
                         android:id="@+id/instructor_image"
                         android:adjustViewBounds="true"
@@ -394,9 +397,9 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:maxHeight="250dp"
-                            android:maxWidth="200dp"
+                            android:maxWidth="165dp"
                             android:minHeight="250dp"
-                            android:minWidth="200dp"
+                            android:minWidth="165dp"
                             android:src="@drawable/no_image_sml"
                             android:id="@+id/instructor_image2"
                             android:adjustViewBounds="true" />
